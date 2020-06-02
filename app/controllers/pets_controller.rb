@@ -19,15 +19,12 @@ post '/pets' do
     @pet.owner = Owner.create(name: params["owner"]["name"])
   end
   @pet.save
-  #  redirect "/pets/#{@pet.id}"
-  # binding.pry
   redirect to "pets/#{@pet.id}"
 end
 
 get '/pets/:id' do
-  # @owners = Owner.all
+  @owners = Owner.all
   @pet = Pet.find(params[:id])
-# binding.pry
   erb :'/pets/show'
 end
 
